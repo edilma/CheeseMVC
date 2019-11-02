@@ -8129,11 +8129,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Edilma\\Desktop\\Programming Practice\\C#\\CheeseMVC\\CheeseMVC.csproj",
+      "projectUniqueName": "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\CheeseMVC.csproj",
       "projectName": "CheeseMVC",
-      "projectPath": "C:\\Users\\Edilma\\Desktop\\Programming Practice\\C#\\CheeseMVC\\CheeseMVC.csproj",
+      "projectPath": "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\CheeseMVC.csproj",
       "packagesPath": "C:\\Users\\Edilma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Edilma\\Desktop\\Programming Practice\\C#\\CheeseMVC\\obj\\",
+      "outputPath": "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Edilma\\AppData\\Roaming\\NuGet\\NuGet.Config",

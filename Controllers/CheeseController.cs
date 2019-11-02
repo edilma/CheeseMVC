@@ -29,6 +29,11 @@ namespace CheeseMVC.Controllers
             return View();
         }
 
+        public IActionResult Remove()
+        {
+            return View();
+        }
+
         [HttpPost]
         [Route("/Cheese/Add")]
         public IActionResult NewCheese(string name, string description)
@@ -37,6 +42,16 @@ namespace CheeseMVC.Controllers
             //Cheeses.Add(name);
             Cheeses.Add(name, description);
             return Redirect("/Cheese");
+        }
+
+        [HttpPost]
+        [Route("/Cheese/Remove")]
+        public IActionResult Remove(string name)
+        {
+            //Remove a checked cheese
+
+                        
+            return View();
         }
     }
 }
