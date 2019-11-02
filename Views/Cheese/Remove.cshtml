@@ -3,11 +3,16 @@
     Layout = null;
 }
 
-<form method="post">
-    <input type="text" name="name" value="Cheese Name" />
-    <input type="text" name="description" value="Cheese Description" />
-    <input type="submit" value="Add Cheese" />
-</form>
 
+<h1> Remove Cheeses</h1>
+<form name="cheeseToDelete" method="post">
+    @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+    {
+
+        <input type="checkbox" name="cheese" value="@cheese.Key" />  @cheese.Key
+    }
+        <input type="submit" value="Delete selected cheeses" />
+    
+    </form>
 
 <p>hola </p>

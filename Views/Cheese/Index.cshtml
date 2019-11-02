@@ -26,15 +26,6 @@
     }
 </ul>
 
-<h1> Remove Cheeses</h1>
-@foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
-{
-    <form name="cheeseToDelete" method="post" action="simpleform.asp">
-        
-        <input type="checkbox" name="@cheese.Key " />  @cheese.Key
-        <input type="button" value="Delete Cheeses" />
-    </form>
-}
 
 
 
