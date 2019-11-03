@@ -8,7 +8,8 @@
 <h1>My Cheese</h1>
 <p>
     <a asp-controller="Cheese" asp-action="Add">Add Cheese </a><br />
-    <a asp-controller="Cheese" asp-action="Remove">Remove Cheese </a>
+    <a asp-controller="Cheese" asp-action="Remove">Remove Cheese Checkbox </a><br />
+    <a asp-controller="Cheese" asp-action="Delete">Delete Cheese Select </a>
 </p>
 
 @if (ViewBag.cheeses.Count == 0)
@@ -26,15 +27,8 @@
     }
 </ul>
 
-<h1> Remove Cheeses</h1>
-@foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
-{
-    <form name="cheeseToDelete" method="post" action="simpleform.asp">
-        
-        <input type="checkbox" name="@cheese.Key " />  @cheese.Key
-        <input type="button" value="Delete Cheeses" />
-    </form>
-}
+
+
 
 
 

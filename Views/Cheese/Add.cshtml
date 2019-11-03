@@ -1,12 +1,18 @@
 ﻿
 @{
-    //Layout = _Layout.cs;
+//Layout = _Layout.cs;
 
 }
 
+
+
 <form method="post">
-    <input type="text" name="name" value="Cheese Name"/>
-    <input type="text" name="description" value="Cheese Description"/> 
+    <input type="text" name="name" placeholder=" Name"/>
+    <input type="text" name="description" placeholder="Description"/> 
     <input type ="submit" value="Add Cheese" />
+    @if (name==null)
+    {
+        Console.WriteLine("Please provide a name for the cheese);
+    }
 </form>
 

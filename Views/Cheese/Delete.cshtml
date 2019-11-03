@@ -2,9 +2,13 @@
 @{
     Layout = null;
 }
+    <form name="selectToDelete" method="post">
+        <select >
+            @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+            {
+                <option name="cheese" value=@cheese> @cheese.Key</option>
+            }
+        </select>
+            <input type="submit" value="Delete Cheese" />
 
-<form method="post">
-    <input type="checkbox" name="name" />
-
-</form>
-
+        </form>

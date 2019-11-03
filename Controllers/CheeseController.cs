@@ -31,6 +31,13 @@ namespace CheeseMVC.Controllers
 
         public IActionResult Remove()
         {
+            ViewBag.cheeses = Cheeses;
+            return View();
+        }
+
+        public IActionResult Delete()
+        {
+            ViewBag.cheeses = Cheeses;
             return View();
         }
 
@@ -46,12 +53,26 @@ namespace CheeseMVC.Controllers
 
         [HttpPost]
         [Route("/Cheese/Remove")]
-        public IActionResult Remove(string name)
+        public IActionResult Remove(string[] cheese)
         {
             //Remove a checked cheese
-
+            for (int i = 0; i < cheese.Length; i++)
+            {
+                Cheeses.Remove(cheese[i]);
+            }
+            
                         
-            return View();
+            return Redirect("/Cheese");
+        }
+
+        [HttpPost]
+        [Route("/Cheese/Delete")]
+        public IActionResult DelCheese(string cheese)
+        {
+            //Delete the cheese using the select drop down list
+            Cheeses.Remove(cheese);
+            
+            return Redirect("/Cheese");
         }
     }
 }
