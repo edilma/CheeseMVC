@@ -45,10 +45,21 @@ namespace CheeseMVC.Controllers
         [Route("/Cheese/Add")]
         public IActionResult NewCheese(string name, string description)
         {
-            // Add the new cheese to existing list of cheeses
-            //Cheeses.Add(name);
-            Cheeses.Add(name, description);
-            return Redirect("/Cheese");
+            string error = validate(name);
+            if (error == "")
+            {
+                Cheeses.Add(name, description);
+                return Redirect("/Cheese");
+            }
+            else
+            {
+                ViewBag.cheeses = Cheeses;
+                ViewBag.error = error;
+                return View("Index");
+            }
+           
+                
+            
         }
 
         [HttpPost]
@@ -74,5 +85,25 @@ namespace CheeseMVC.Controllers
             
             return Redirect("/Cheese");
         }
+
+        private static string validate(string name)
+        {
+            //string alphabeth = "abcdefghijklmnopqrstuvwxyz";
+            string errors = "";
+            if (name==null || name=="")
+            {
+                errors += "A name for the Cheese is needed";      
+            }
+
+            else if (name.Any(char.IsDigit))
+            {
+                errors += "A name cannot contain a number";
+            }
+
+            return errors;
+        }
+
     }
+
+
 }
