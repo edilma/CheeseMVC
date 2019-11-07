@@ -10,12 +10,12 @@ namespace CheeseMVC.Controllers
     public class CheeseController : Controller
     {
         //public Dictionary<string, string> Cheeses.CheeseMVC(name , description ) ;
-        //static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
-        //static private List<string> Cheeses = new List<string>();
+        
+
 
         public IActionResult Index()
         {
-            Dictionary<string, string> cheese = new Cheese();
+
             //List<string> cheeses = new List<string>();
             //cheeses.Add("Cheddar");
             //cheeses.Add("Munster");
@@ -23,8 +23,8 @@ namespace CheeseMVC.Controllers
             //cheeses.Add("Harvaty");
             //ViewBag.cheeses = cheeses;
 
-            //ViewBag.cheeses = Cheeses;
-            return View(cheese);
+            ViewBag.cheeses = CheeseData.GetAll();
+            return View();
         }
         public IActionResult Add()
         {
@@ -33,61 +33,77 @@ namespace CheeseMVC.Controllers
 
         public IActionResult Remove()
         {
-            ViewBag.cheeses = cheese;
+            ViewBag.title = "Remove Cheeses";
+            ViewBag.cheeses = CheeseData.GetAll();
             return View();
         }
 
         public IActionResult Delete()
         {
-            ViewBag.cheeses = cheese;
+            ViewBag.title = "Delete Cheeses";
+            ViewBag.cheeses = CheeseData.GetAll();
             return View();
         }
 
         [HttpPost]
         [Route("/Cheese/Add")]
-        public IActionResult NewCheese(string name, string description)
+        public IActionResult NewCheese(/*string name, string description=""*/ Cheese newCheese)
         {
-            string error = validate(name);
+            string error = validate(newCheese.Name);
             if (error == "")
             {
-                cheese.Add(name, description);
+                /*Cheese newCheese = new Cheese
+                {
+                    Description = description,
+                    Name = name
+
+                };*/
+                CheeseData.Add(newCheese);
+
                 return Redirect("/Cheese");
             }
             else
             {
-                ViewBag.cheeses = cheese;
+                ViewBag.cheeses = CheeseData.GetAll();
                 ViewBag.error = error;
                 return View("Index");
             }
-           
-                
-            
         }
-
+                
+       
         [HttpPost]
         [Route("/Cheese/Remove")]
-        public IActionResult Remove(string[] cheese)
+        public IActionResult Remove(int[] cheeseIds)
         {
             //Remove a checked cheese
-            for (int i = 0; i < cheese.Length; i++)
+            /*for (int i = 0; i < cheeseIds.Length; i++)
             {
-                Cheeses.Remove(cheese[i]);
+                Cheeses.Remove(cheeseIds[i]);
             }
-            
-                        
+            */
+            foreach (int cheeseId in cheeseIds)
+            {
+                CheeseData.Remove(cheeseId);
+            }
+                      
             return Redirect("/Cheese");
         }
+        
 
+           
         [HttpPost]
         [Route("/Cheese/Delete")]
-        public IActionResult DelCheese(string cheese)
+        public IActionResult DelCheese(int cheeseId)
         {
             //Delete the cheese using the select drop down list
-            Cheeses.Remove(cheese);
-            
+            //Cheeses.Remove(cheese);
+            CheeseData.Remove(cheeseId);
+
+
             return Redirect("/Cheese");
         }
-
+        
+    
         private static string validate(string name)
         {
             //string alphabeth = "abcdefghijklmnopqrstuvwxyz";
