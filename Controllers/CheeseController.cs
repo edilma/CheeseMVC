@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using CheeseMVC.Models;
 
 namespace CheeseMVC.Controllers
 {
     public class CheeseController : Controller
     {
-        static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
+        //public Dictionary<string, string> Cheeses.CheeseMVC(name , description ) ;
+        //static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
         //static private List<string> Cheeses = new List<string>();
 
         public IActionResult Index()
         {
-
+            Dictionary<string, string> cheese = new Cheese();
             //List<string> cheeses = new List<string>();
             //cheeses.Add("Cheddar");
             //cheeses.Add("Munster");
             //cheeses.Add("Parmesan");
             //cheeses.Add("Harvaty");
             //ViewBag.cheeses = cheeses;
-            
-            ViewBag.cheeses = Cheeses;
-            return View();
+
+            //ViewBag.cheeses = Cheeses;
+            return View(cheese);
         }
         public IActionResult Add()
         {
@@ -31,13 +33,13 @@ namespace CheeseMVC.Controllers
 
         public IActionResult Remove()
         {
-            ViewBag.cheeses = Cheeses;
+            ViewBag.cheeses = cheese;
             return View();
         }
 
         public IActionResult Delete()
         {
-            ViewBag.cheeses = Cheeses;
+            ViewBag.cheeses = cheese;
             return View();
         }
 
@@ -48,12 +50,12 @@ namespace CheeseMVC.Controllers
             string error = validate(name);
             if (error == "")
             {
-                Cheeses.Add(name, description);
+                cheese.Add(name, description);
                 return Redirect("/Cheese");
             }
             else
             {
-                ViewBag.cheeses = Cheeses;
+                ViewBag.cheeses = cheese;
                 ViewBag.error = error;
                 return View("Index");
             }

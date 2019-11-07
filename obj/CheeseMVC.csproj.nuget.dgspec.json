@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Edilma\\Desktop\\C#\\CheeseMVC\\CheeseMVC.csproj": {}
+    "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\CheeseMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Edilma\\Desktop\\C#\\CheeseMVC\\CheeseMVC.csproj": {
+    "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\CheeseMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edilma\\Desktop\\C#\\CheeseMVC\\CheeseMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\CheeseMVC.csproj",
         "projectName": "CheeseMVC",
-        "projectPath": "C:\\Users\\Edilma\\Desktop\\C#\\CheeseMVC\\CheeseMVC.csproj",
+        "projectPath": "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\CheeseMVC.csproj",
         "packagesPath": "C:\\Users\\Edilma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edilma\\Desktop\\C#\\CheeseMVC\\obj\\",
+        "outputPath": "C:\\Users\\Edilma\\Desktop\\lc101\\CheeseMVC\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\Edilma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
