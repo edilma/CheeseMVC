@@ -51,7 +51,7 @@ namespace CheeseMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Cheese}/{action=Index}/{id?}");
             });
         }
     }

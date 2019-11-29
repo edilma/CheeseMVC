@@ -386,3 +386,4 @@ C:\Users\Edilma\Desktop\C#\CheeseMVC\obj\Debug\netcoreapp3.0\CheeseMVC.Views.pdb
 C:\Users\Edilma\Desktop\C#\CheeseMVC\obj\Debug\netcoreapp3.0\CheeseMVC.csproj.CopyComplete
 C:\Users\Edilma\Desktop\C#\CheeseMVC\obj\Debug\netcoreapp3.0\CheeseMVC.dll
 C:\Users\Edilma\Desktop\C#\CheeseMVC\obj\Debug\netcoreapp3.0\CheeseMVC.pdb
+C:\Users\Edilma\Desktop\lc101\CheeseMVC\obj\Debug\netcoreapp3.0\Razor\Views\Cheese\Edit.cshtml.g.cs

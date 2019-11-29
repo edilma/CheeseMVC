@@ -1,12 +1,10 @@
 ﻿
-@{
-    Layout = null;
-}
+
     <form name="delSelect" method="post">
-        <select name="cheese">
-            @foreach (KeyValuePair<string, string> cheese in ViewBag.cheeses)
+        <select name="cheeseId">
+            @foreach (var cheese in ViewBag.cheeses)
             {
-                <option value=@cheese.Key> @cheese.Key</option>
+                <option name="@cheese.Name" id="@cheese.CheeseId" value="@cheese.CheeseId"> @cheese.Name</option>
             }
         </select>
             <input type="submit" value="Delete Cheese" />

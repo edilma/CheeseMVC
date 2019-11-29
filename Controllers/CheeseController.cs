@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CheeseMVC.Models;
+using CheeseMVC.ViewModels;
 
 namespace CheeseMVC.Controllers
 {
@@ -12,81 +13,107 @@ namespace CheeseMVC.Controllers
         //public Dictionary<string, string> Cheeses.CheeseMVC(name , description ) ;
         //static private Dictionary<string, string> Cheeses = new Dictionary<string, string>();
         //static private List<string> Cheeses = new List<string>();
+        
 
         public IActionResult Index()
         {
-            Dictionary<string, string> cheese = new Cheese();
-            //List<string> cheeses = new List<string>();
-            //cheeses.Add("Cheddar");
-            //cheeses.Add("Munster");
-            //cheeses.Add("Parmesan");
-            //cheeses.Add("Harvaty");
-            //ViewBag.cheeses = cheeses;
 
-            //ViewBag.cheeses = Cheeses;
-            return View(cheese);
+            List<Cheese> cheeses = CheeseData.GetAll();
+            return View(cheeses);
         }
+       
         public IActionResult Add()
         {
-            return View();
+            AddCheeseViewModel addCheeseViewModel = new AddCheeseViewModel();
+            return View(addCheeseViewModel);
         }
 
         public IActionResult Remove()
         {
-            ViewBag.cheeses = cheese;
+            ViewBag.title = "Remove Cheeses";
+            ViewBag.cheeses = CheeseData.GetAll();
             return View();
         }
 
         public IActionResult Delete()
         {
-            ViewBag.cheeses = cheese;
+            ViewBag.cheeses = CheeseData.GetAll();
             return View();
         }
 
         [HttpPost]
-        [Route("/Cheese/Add")]
-        public IActionResult NewCheese(string name, string description)
+        public IActionResult Add(AddCheeseViewModel addCheeseViewModel)
         {
-            string error = validate(name);
-            if (error == "")
+            if (ModelState.IsValid)
             {
-                cheese.Add(name, description);
+                Cheese mycheese= CreateCheese( addCheeseViewModel);
+                CheeseData.Add(mycheese);
                 return Redirect("/Cheese");
             }
-            else
-            {
-                ViewBag.cheeses = cheese;
-                ViewBag.error = error;
-                return View("Index");
-            }
-           
-                
+            return View(addCheeseViewModel);
             
         }
 
         [HttpPost]
         [Route("/Cheese/Remove")]
-        public IActionResult Remove(string[] cheese)
+        public IActionResult Remove(int[] cheeseIds)
         {
+            
+
             //Remove a checked cheese
-            for (int i = 0; i < cheese.Length; i++)
+            foreach (int cheeseId in cheeseIds)
+
             {
-                Cheeses.Remove(cheese[i]);
+                CheeseData.Remove(cheeseId); ;
             }
             
                         
-            return Redirect("/Cheese");
+            return Redirect("/");
         }
 
         [HttpPost]
         [Route("/Cheese/Delete")]
-        public IActionResult DelCheese(string cheese)
+        public IActionResult DelCheese(int cheeseId)
         {
             //Delete the cheese using the select drop down list
-            Cheeses.Remove(cheese);
+            CheeseData.Remove(cheeseId);
             
             return Redirect("/Cheese");
         }
+        //This is the get
+        public IActionResult Edit(int cheeseId)
+        {
+            //https:localhost:44311/Cheese/Edit?cheeseId=1
+            //int cheeseId = Request.QueryString["cheeseId"];
+
+            AddEditCheeseViewModel addEditCheeseViewModel = new AddEditCheeseViewModel();
+            Cheese cheeseToEdit = CheeseData.GetById(cheeseId);
+            addEditCheeseViewModel.Name = cheeseToEdit.Name;
+            addEditCheeseViewModel.Description = cheeseToEdit.Description;
+            addEditCheeseViewModel.Type = cheeseToEdit.Type;
+            addEditCheeseViewModel.cheeseId = cheeseToEdit.CheeseId;
+
+            return View(addEditCheeseViewModel);
+            
+        }
+
+        [HttpPost]
+        [Route("/Cheese/Edit")]
+        public IActionResult Edit (AddEditCheeseViewModel addEditCheeseViewModel)
+        {
+            
+            Cheese myCheese = CheeseData.GetById(addEditCheeseViewModel.cheeseId);
+            myCheese.Name = addEditCheeseViewModel.Name;
+            myCheese.Description = addEditCheeseViewModel.Description;
+            myCheese.Type = addEditCheeseViewModel.Type;
+
+            return Redirect("/Cheese");
+        }
+
+
+
+
+
 
         private static string validate(string name)
         {
