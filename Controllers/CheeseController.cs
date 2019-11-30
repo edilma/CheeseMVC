@@ -46,7 +46,7 @@ namespace CheeseMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                Cheese mycheese= CreateCheese( addCheeseViewModel);
+                Cheese mycheese = addCheeseViewModel.CreateCheese();
                 CheeseData.Add(mycheese);
                 return Redirect("/Cheese");
             }

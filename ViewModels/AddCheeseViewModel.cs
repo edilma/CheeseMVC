@@ -45,7 +45,7 @@ namespace CheeseMVC.ViewModels
 
         }
 
-        private Cheese CreateCheese()
+        public Cheese CreateCheese()
         {
             Cheese newCheese = new Cheese
             {
